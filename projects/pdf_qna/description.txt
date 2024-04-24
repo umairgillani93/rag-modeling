@@ -1,0 +1,1 @@
+A langchain project that reads, pdf file and answers anything asked from the pdf context.
