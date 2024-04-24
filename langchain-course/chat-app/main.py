@@ -6,7 +6,8 @@ from langchain.prompts import MessagesPlaceholder
 from langchain_community.chat_models.ollama import ChatOllama 
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory
+from langchain.memory import ConversationBufferMemory, FileChatMessageHistory
+
 
 '''
 so we are going to build a chat-system now in a gpt-playgound style
@@ -43,6 +44,7 @@ embeddigns = OllamaEmbeddings()
 
 # set up memeory class to store the history chat
 memory = ConversationBufferMemory(memory_key = "messages",
+        chat_memory = FileChatMessageHistory("messages.json"),
         return_messages = True)
 
 
