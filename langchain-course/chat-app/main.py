@@ -1,12 +1,14 @@
 import os
 import sys
-from langchain.prompts import HumanMessagePromptTemplate
-from langchain.prompts import ChatPromptTemplate
-from langchain.prompts import MessagesPlaceholder 
+from langchain.prompts import HumanMessagePromptTemplate                   # for getting human input
+from langchain.prompts import ChatPromptTemplate                           # for making chat prompts
+from langchain.prompts import MessagesPlaceholder                          # placeholder that can be used to pass the list of messages
 from langchain_community.chat_models.ollama import ChatOllama 
 from langchain_community.embeddings import OllamaEmbeddings
 from langchain.chains import LLMChain
-from langchain.memory import ConversationBufferMemory, FileChatMessageHistory
+#from langchain.memory import ConversationBufferMemory                      # class to save the chat in memory 
+from langchain.memory import ConversationSummaryMemory# class to save the chat in memory 
+from langchain.memory import FileChatMessageHistory                        # save memory content in file
 
 
 '''
@@ -36,23 +38,29 @@ prompt = ChatPromptTemplate(
 # lets create a language model now
 # since we're building a chat style application so we need to import ChatOllama model
 # instead of Ollama
-chat = ChatOllama(model = "llama2")
+chat = ChatOllama(model = "llama2",
+        verbose = True)
 
 # create our embeddings
 embeddigns = OllamaEmbeddings()
 
 
 # set up memeory class to store the history chat
-memory = ConversationBufferMemory(memory_key = "messages",
-        chat_memory = FileChatMessageHistory("messages.json"),
-        return_messages = True)
-
+memory = ConversationSummaryMemory(memory_key = "messages",
+        # if we are using 'ConversationSummaryMemory we have to provide its 
+        # own prompt for it.
+        #chat_memory = FileChatMessageHistory("messages.json"),
+        return_messages = True,
+        llm = chat
+        )
+        
 
 # define our chain
 chain = LLMChain(
         llm = chat,
         prompt = prompt,
-        memory = memory
+        memory = memory,
+        verbose = True
         )
 
 # start infinite loop
@@ -91,8 +99,4 @@ while True:
 
 
     '''
-
-    
-
-
 
