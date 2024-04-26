@@ -24,27 +24,28 @@ from langchain.vectorstores import Chroma
 #prompt = """ use the following facts to answer the following questions:
 #    """ + "\n\n" + result + "\n\n" + content
 
+# create embeddings using Ollama
 embeddings = OllamaEmbeddings()
 
+# split the text into smaller chunks
 text_splitter = CharacterTextSplitter(
         separator = "\n",
         chunk_size = 200,
         chunk_overlap = 0
         )
 
+# initiate the loader
 loader = TextLoader("./facts.txt")
+
+# create docs instance, to be used for embeddings
 docs = loader.load_and_split(
         text_splitter = text_splitter)
 
+# create a vector store
 db = Chroma.from_documents(
         docs,
         embedding = embeddings,
         persist_directory="emb"
         )
-        
 
-print('search results: \n')
-result = db.similarity_search("give me a cool fact about word Dreamt",
-    k = 2)
-
-print(result)
+print(" >>>>>>>>>> DONE >>>>>>>>")
