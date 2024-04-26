@@ -1,0 +1,26 @@
+[32mINFO[0m:     [26-04-2024 10:14:07] Set chroma_server_nofile to 65535
+[32mINFO[0m:     [26-04-2024 10:14:07] Anonymized telemetry enabled. See                     https://docs.trychroma.com/telemetry for more information.
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component System
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component OpenTelemetryClient
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component SqliteDB
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component QuotaEnforcer
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component Posthog
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component LocalSegmentManager
+[36mDEBUG[0m:    [26-04-2024 10:14:07] Starting component SegmentAPI
+[32mINFO[0m:     [26-04-2024 10:14:07] Started server process [[36m8384[0m]
+[32mINFO[0m:     [26-04-2024 10:14:07] Waiting for application startup.
+[32mINFO[0m:     [26-04-2024 10:14:07] Application startup complete.
+[32mINFO[0m:     [26-04-2024 10:14:07] Uvicorn running on [1mhttp://localhost:8000[0m (Press CTRL+C to quit)
+[32mINFO[0m:     [26-04-2024 10:14:15] 127.0.0.1:41088 - "GET / HTTP/1.1" 404
+[32mINFO[0m:     [26-04-2024 10:14:15] 127.0.0.1:41088 - "GET /favicon.ico HTTP/1.1" 404
+[32mINFO[0m:     [26-04-2024 10:17:47] Shutting down
+[32mINFO[0m:     [26-04-2024 10:17:47] Waiting for application shutdown.
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component System
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component SegmentAPI
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component LocalSegmentManager
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component Posthog
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component QuotaEnforcer
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component SqliteDB
+[36mDEBUG[0m:    [26-04-2024 10:17:47] Stopping component OpenTelemetryClient
+[32mINFO[0m:     [26-04-2024 10:17:47] Application shutdown complete.
+[32mINFO[0m:     [26-04-2024 10:17:47] Finished server process [[36m8384[0m]
