@@ -26,14 +26,14 @@ from langchain.vectorstores import Chroma
 
 # create embeddings using Ollama
 MODEL = "llama3"
-embeddings = OllamaEmbeddings(model = MODEL)
+embeddings = OllamaEmbeddings()
 
 print(" >> using LLAMA3 8b embeddings..")
 
 # split the text into smaller chunks
 text_splitter = CharacterTextSplitter(
+        chunk_size = 150,
         separator = "\n",
-        chunk_size = 200,
         chunk_overlap = 0
         )
 
@@ -52,9 +52,4 @@ db = Chroma.from_documents(
         embedding = embeddings,
         persist_directory="emb"
         )
-
-result = db.similarity_search("english language", k = 2)
-
-print(result)
-
 print(" >>>>>>>>>> DONE >>>>>>>>")
