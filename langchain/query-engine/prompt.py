@@ -1,5 +1,6 @@
 import os 
 import sys 
+import langchain
 from langchain import hub
 from langchain.embeddings import OllamaEmbeddings
 from langchain.vectorstores import Chroma
@@ -7,6 +8,10 @@ from langchain.chains import RetrievalQA
 from langchain_community.chat_models.ollama import ChatOllama
 from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain.chains import create_retrieval_chain
+from rfr import RFR 
+
+#  initiate debugging
+langchain.debug = True
 
 # input query
 query = "what is an interesting fact about English language"
@@ -24,7 +29,10 @@ db = Chroma(
 chat = ChatOllama(model = "llama3")
 
 # create retriever instance
-retriever = db.as_retriever()
+retriever = RFR(
+        embeddings = embeddings,
+        chroma = db
+        )
 
 # initiate retriever object
 # what this does is it uses RetrieverQA to create LLM chain
@@ -32,8 +40,6 @@ retriever = db.as_retriever()
 # in a Q/A kind of fashion
 # so instead of using our own chain, we can use RetrieverQA directly
 
-# create retriever instance
-#retriever = db.as_retriever()
 #retrieval_qa_chat_prompt = hub.pull("langchain-ai/retrieval-qa-chat")
 #
 #combine_docs_chain = create_stuff_documents_chain(
