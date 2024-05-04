@@ -7,7 +7,7 @@ from langchain.prompts import (
         HumanMessagePromptTemplate,
         MessagesPlaceholder
         )
-from sql import run_query, list_tables
+from sql import run_query, list_tables, describe_tables_tool
 from langchain.agents import AgentExecutor, OpenAIFunctionsAgent
 from langchain.agents.agent_types import AgentType
 from langchain.agents.initialize import initialize_agent
@@ -39,7 +39,7 @@ prompt = ChatPromptTemplate(
 
 
 # define the tools 
-tools = [run_query]
+tools = [run_query, describe_tables_tool]
 
 # creating agent
 # agent = create_openai_functions_agent(

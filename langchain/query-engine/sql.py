@@ -23,6 +23,14 @@ def run_query(query):
         return c.fetchall()
     except Exception as e:
         return f"The following error occured: {str(err)}"
+
+def describe_tables(table_names):
+    c = conn.cursor()
+    tables = ', '.join("'" + table + "'" for table in table_nams)
+    rows = c.execute(
+            f"SELECT sql FROM sqlite_master WHERE type='table' AND name in {table_names};"
+            )
+    return '\n'.join(row[0] for row in rows if row[0] is not None)
         
 
 # create run_query_tool
@@ -32,6 +40,12 @@ run_query_tool = Tool.from_function(
         name="run-sqlite-query",
         description="run a SQL query",
         func = run_query
+        )
+
+describe_tables_tool = Tool.from_function(
+        name = "describe_tables",
+        description = "Give a list of table names, returns the schema of those tables",
+        func = describe_tables
         )
 
 
