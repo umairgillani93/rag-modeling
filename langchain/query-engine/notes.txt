@@ -1,0 +1,7 @@
+1. ChatGpt assumes table names by default
+2. We wrote a function 'tables_list' to let ChatGpt know what are the tables that exist inside our schema 
+3. We than created a separated tool to access let ChatGpt access our required tables
+4. We than went ahead and create custom classes for ChatGpt tools to access the relevant argument and have complete
+information of functions arguments that we are passing to ChatGpt.
+
+
