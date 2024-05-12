@@ -2,6 +2,7 @@ import sqlite3
 from typing import List
 from langchain.tools import Tool
 from pydantic.v1 import BaseModel
+from langchain.agents import tool
 
 # create db connection
 conn = sqlite3.connect("db.sqlite")
@@ -20,6 +21,7 @@ def list_tables():
     rows = c.fetchall() # fetches all the results
     return "\n".join([row[0] for row in rows if row is not None]) 
 
+@tool
 def run_query(query):
     '''runs the passed query
     and returns the result.'''

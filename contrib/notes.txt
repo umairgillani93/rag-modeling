@@ -1,0 +1,6 @@
+1. inherit from BaseSingleActionAgent
+
+```
+class CustomAgent(BaseSingleActionAgent):
+    ''' implement the necessory methods '''
+	 
